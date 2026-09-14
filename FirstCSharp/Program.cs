@@ -13,8 +13,8 @@
 // age = CalculateAge(Convert.ToInt32(Console.ReadLine()));
 //
 // Console.WriteLine($"My name is {name}. {age} years old.");
-//
-//
+
+
 // ==============================SERT OPERATOR ILE IS=====================================
 //
 // string name;
@@ -162,7 +162,7 @@
 //
 //         var adult = users.Where(u => u.Age >= 18).Select(u => u.Name).ToList();
 //
-//         for (int i = 0; i < adult.Count; i++)
+//         for (inti = 0; i < adult.Count; i++)
 //         {
 //             Console.WriteLine($"Adult name: {adult[i]}");
 //         }
@@ -175,38 +175,140 @@
 
 // ==============================BANK ACCOUNT TASK=====================================
 
-class BankAccount
+// class BankAccount
+// {
+//     public string AccountNumber { get; private set; }
+//     public decimal Balance { get; private set; }
+//
+//     public BankAccount(string accountNumber)
+//     {
+//         AccountNumber = accountNumber;
+//     }
+//
+//     public void Deposit(decimal amount)
+//     {
+//         if (amount > 0)
+//         {
+//             Balance += amount;
+//         }
+//         else
+//         {
+//             throw new ArgumentException("Amount must be greater than 0.");
+//         }
+//     }
+//
+//     public void Withdraw(decimal amount)
+//     {
+//         if (amount > 0 && Balance >= amount)
+//         {
+//             Balance -= amount;
+//         }
+//         else
+//         {
+//             throw new ArgumentException("Insufficient balance");
+//         }
+//     }
+// }
+
+// class Program
+// {
+//     static void Main(string[] args)
+//     {
+//         BankAccount account = new BankAccount("AA12345");
+//
+//         account.Deposit(500);
+//         account.Deposit(100);
+//         account.Withdraw(200);
+//
+//         Console.WriteLine(account.Balance);
+//     }
+// }
+
+
+// ==============================INHERITANCE TASK=====================================
+
+// class Person
+// {
+//     public string Name { get; set; }
+//     public int Age { get; set; }
+//
+//     public Person(string name, int age)
+//     {
+//         Name = name;
+//         Age = age;
+//     }
+//
+//     public void Introduce()
+//     {
+//         Console.WriteLine($"My name is {Name} and I am {Age} years old.");
+//     }
+// }
+//
+// class Student : Person
+// {
+//     public string University { get; set; }
+//
+//     public Student(string name, int age, string uni) : base(name, age)
+//     {
+//         University = uni;
+//     }
+//
+//     public void Study()
+//     {
+//         Console.WriteLine($"I study at {University}.");
+//     }
+// }
+//
+// class Program
+// {
+//     static void Main(string[] args)
+//     {
+//         Student student = new Student("Firuza", 22, "Baku Engineering University");
+//
+//         student.Introduce();
+//         student.Study();
+//     }
+// }
+
+
+// ==============================POLYMORPHISM TASK=====================================
+
+class Employee
 {
-    public string AccountNumber { get; private set; }
-    public decimal Balance { get; private set; }
+    public string Name { get; set; }
 
-    public BankAccount(string accountNumber)
+    public Employee(string name)
     {
-        AccountNumber = accountNumber;
+        Name = name;
     }
 
-    public void Deposit(decimal amount)
+    public virtual void Work()
     {
-        if (amount > 0)
-        {
-            Balance += amount;
-        }
-        else
-        {
-            throw new ArgumentException("Amount must be greater than 0.");
-        }
+        Console.WriteLine("Employee is working.");
+    }
+}
+
+class Developer : Employee
+{
+    public Developer(string name) : base(name)
+    {
     }
 
-    public void Withdraw(decimal amount)
+    public override void Work()
     {
-        if (amount > 0 && Balance >= amount)
-        {
-            Balance -= amount;
-        }
-        else
-        {
-            throw new ArgumentException("Insufficient balance");
-        }
+        Console.WriteLine("Developer is coding.");
+    }
+}
+
+class Designer : Employee
+{
+    public Designer(string name) : base(name)
+    {
+    }
+
+    public override void Work()
+    {
+        Console.WriteLine("Designer is designing.");
     }
 }
 
@@ -214,12 +316,15 @@ class Program
 {
     static void Main(string[] args)
     {
-        BankAccount account = new BankAccount("AA12345");
+        List<Employee> employees = new List<Employee>
+        {
+            new Developer("Firuza"),
+            new Designer("Ali")
+        };
 
-        account.Deposit(500);
-        account.Deposit(100);
-        account.Withdraw(200);
-
-        Console.WriteLine(account.Balance);
+        foreach (Employee employee in employees)
+        {
+            employee.Work();
+        }
     }
 }

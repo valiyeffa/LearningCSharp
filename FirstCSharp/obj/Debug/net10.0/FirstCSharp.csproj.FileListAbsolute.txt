@@ -12,3 +12,4 @@
 /Users/firuzavaliyeva/FirstCSharp/FirstCSharp/obj/Debug/net10.0/FirstCSharp.pdb
 /Users/firuzavaliyeva/FirstCSharp/FirstCSharp/obj/Debug/net10.0/FirstCSharp.genruntimeconfig.cache
 /Users/firuzavaliyeva/FirstCSharp/FirstCSharp/obj/Debug/net10.0/ref/FirstCSharp.dll
+/Users/firuzavaliyeva/FirstCSharp/FirstCSharp/obj/Debug/net10.0/FirstCSharp.sourcelink.json
