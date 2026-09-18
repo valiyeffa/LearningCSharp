@@ -273,42 +273,145 @@
 
 // ==============================POLYMORPHISM TASK=====================================
 
-class Employee
+// class Employee
+// {
+//     public string Name { get; set; }
+//
+//     public Employee(string name)
+//     {
+//         Name = name;
+//     }
+//
+//     public virtual void Work()
+//     {
+//         Console.WriteLine("Employee is working.");
+//     }
+// }
+//
+// class Developer : Employee
+// {
+//     public Developer(string name) : base(name)
+//     {
+//     }
+//
+//     public override void Work()
+//     {
+//         Console.WriteLine("Developer is coding.");
+//     }
+// }
+//
+// class Designer : Employee
+// {
+//     public Designer(string name) : base(name)
+//     {
+//     }
+//
+//     public override void Work()
+//     {
+//         Console.WriteLine("Designer is designing.");
+//     }
+// }
+//
+// class Program
+// {
+//     static void Main(string[] args)
+//     {
+//         List<Employee> employees = new List<Employee>
+//         {
+//             new Developer("Firuza"),
+//             new Designer("Ali")
+//         };
+//
+//         foreach (Employee employee in employees)
+//         {
+//             employee.Work();
+//         }
+//     }
+// }
+
+
+// ==============================PAYMENT SYSTEM TASK w/Abstraction=====================================
+
+// abstract class Payment
+// {
+//     public decimal Amount { get; protected set; }
+//
+//     public Payment(decimal amount)
+//     {
+//         Amount = amount;
+//     }
+//
+//     public abstract void Pay();
+// }
+//
+// class CardPayment : Payment
+// {
+//     public CardPayment(decimal amount) : base(amount)
+//     {
+//     }
+//     
+//     public override void Pay()
+//     {
+//         Console.WriteLine($"Paid with card: {Amount}");
+//     }
+// }
+//
+// class CashPayment :Payment
+// {
+//     public CashPayment(decimal amount):base(amount){}
+//
+//     public override void Pay()
+//     {
+//         Console.WriteLine($"Paid with cash: {Amount}");
+//     }
+// }
+//
+// class Program
+// {
+//     static void Main(string[] args)
+//     {
+//         List<Payment> payments = new List<Payment>
+//         {
+//             new CardPayment(100),
+//             new CashPayment(160)
+//         };
+//
+//         foreach (var i in payments)
+//         {
+//             i.Pay();
+//         }
+//     }
+// }
+
+
+// ==============================INTERFACE TASK=====================================
+
+interface IAnimal
 {
-    public string Name { get; set; }
+    void MakeSound(string sound);
+}
 
-    public Employee(string name)
+class Dog : IAnimal
+{
+    public void MakeSound(string sound)
     {
-        Name = name;
-    }
-
-    public virtual void Work()
-    {
-        Console.WriteLine("Employee is working.");
+        Console.WriteLine($"Dog says: {sound}");
     }
 }
 
-class Developer : Employee
+class Cat : IAnimal
 {
-    public Developer(string name) : base(name)
+    public void MakeSound(string sound)
     {
-    }
-
-    public override void Work()
-    {
-        Console.WriteLine("Developer is coding.");
+        Console.WriteLine($"Cat says: {sound}");
     }
 }
 
-class Designer : Employee
+class Cow : IAnimal
 {
-    public Designer(string name) : base(name)
+    public void MakeSound(string sound)
     {
-    }
-
-    public override void Work()
-    {
-        Console.WriteLine("Designer is designing.");
+        Console.WriteLine($"Cow says: {sound}");
     }
 }
 
@@ -316,15 +419,31 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<Employee> employees = new List<Employee>
+        List<IAnimal> animals = new List<IAnimal>
         {
-            new Developer("Firuza"),
-            new Designer("Ali")
+            new Dog(),
+            new Cat(),
+            new Cow()
         };
 
-        foreach (Employee employee in employees)
+        foreach (IAnimal animal in animals)
         {
-            employee.Work();
+            if (animal.ToString() == "Dog")
+            {
+                animal.MakeSound("Woof!");
+            }
+            else if (animal.ToString() == "Cat")
+            {
+                animal.MakeSound("Meow!");
+            }
+            else if (animal.ToString() == "Cow")
+            {
+                animal.MakeSound("Moo!");
+            }
+            else
+            {
+                throw  new Exception();
+            }
         }
     }
 }
